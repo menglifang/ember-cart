@@ -35,9 +35,14 @@ ActiveRecord::Schema.define(:version => 20120409064833) do
 
   create_table "ember_cart_carts", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "shopper_id"
+    t.string   "shopper_type"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
+
+  add_index "ember_cart_carts", ["shopper_id"], :name => "index_ember_cart_carts_on_shopper_id"
+  add_index "ember_cart_carts", ["shopper_type"], :name => "index_ember_cart_carts_on_shopper_type"
 
   create_table "products", :force => true do |t|
     t.string   "name"

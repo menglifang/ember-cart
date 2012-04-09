@@ -131,6 +131,7 @@ GEM
       ffi (~> 1.0)
       multi_json (~> 1.0)
       rubyzip
+    shoulda-matchers (1.0.0)
     slop (2.4.4)
     sprockets (2.1.2)
       hike (~> 1.2)
@@ -158,3 +159,4 @@ DEPENDENCIES
   pry
   rack_session_access
   rspec-rails
+  shoulda-matchers

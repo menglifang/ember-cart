@@ -12,6 +12,10 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+group :test do
+  gem 'factory_girl_rails'
+end
+
 # The followings are used by the dummy application
 gem 'jquery-rails'
 

@@ -7,6 +7,7 @@ require 'rspec/autorun'
 require 'ffaker'
 require 'factory_girl_rails'
 require 'shoulda-matchers'
+require 'pry'
 
 # Set up capybara
 require 'capybara/rails'

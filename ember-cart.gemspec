@@ -1,7 +1,7 @@
 $:.push File.expand_path('../lib', __FILE__)
 
 # Maintain your gem's version:
-require 'ember-cart/version'
+require 'ember_cart/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
@@ -17,4 +17,5 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '~> 3.2.3'
   s.add_dependency 'ember-rails', '>= 0.2.4'
+  s.add_dependency 'acts_as_api', '>= 0.3.11'
 end

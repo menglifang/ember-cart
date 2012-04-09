@@ -4,6 +4,10 @@ require File.expand_path("../dummy/config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 
+require 'ffaker'
+require 'factory_girl_rails'
+require 'shoulda-matchers'
+
 # Set up capybara
 require 'capybara/rails'
 Capybara.javascript_driver = :webkit

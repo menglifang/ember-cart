@@ -34,3 +34,5 @@ module EmberCart
     end
   end
 end
+
+ActiveRecord::Base.extend(EmberCart::ActsAsCartable)

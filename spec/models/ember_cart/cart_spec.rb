@@ -3,7 +3,19 @@ require 'spec_helper'
 module EmberCart
   describe Cart do
     describe 'db columns' do
-      it { should have_db_column :name }
+      [:name, :shopper_id, :shopper_type].each do |c|
+        it { should have_db_column(c) }
+      end
+    end
+
+    describe 'db indexes' do
+      [:shopper_id, :shopper_type].each do |i|
+        it { should have_db_index(i) }
+      end
+    end
+
+    describe 'associations' do
+      it { should belong_to :shopper }
     end
 
     describe 'validations' do

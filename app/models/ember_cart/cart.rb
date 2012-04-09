@@ -1,5 +1,6 @@
 module EmberCart
   class Cart < ActiveRecord::Base
+    belongs_to :shopper, polymorphic: true
     has_many :cart_items, dependent: :destroy
 
     acts_as_api
@@ -10,6 +11,8 @@ module EmberCart
     end
 
     validates :name, presence: true
+
+    attr_accessible :name, :shopper
 
     def total
       cart_items.roots.map.sum(&:total) || 0
@@ -48,6 +51,13 @@ module EmberCart
         group: opts[:group],
         parent_id: opts[:parent_id]
       )
+    end
+    
+    public
+    class << self
+      def of(shopper)
+        shopper ? Cart.where(shopper: shopper) : []
+      end
     end
   end
 end

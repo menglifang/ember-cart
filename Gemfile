@@ -15,6 +15,8 @@ end
 
 group :test do
   gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'capybara-webkit'
 end
 
 # The followings are used by the dummy application

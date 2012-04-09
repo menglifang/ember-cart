@@ -17,6 +17,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'capybara-webkit'
+  gem 'rack_session_access'
 end
 
 # The followings are used by the dummy application

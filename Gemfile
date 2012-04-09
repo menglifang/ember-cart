@@ -9,6 +9,7 @@ gemspec
 gem 'mysql2'
 
 group :development, :test do
+  gem 'pry'
   gem 'rspec-rails'
 end
 

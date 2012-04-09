@@ -4,12 +4,19 @@ require File.expand_path("../dummy/config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 
+# Set up capybara
+require 'capybara/rails'
+Capybara.javascript_driver = :webkit
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each {|f| require f}
 
 RSpec.configure do |config|
+  # Mixin routes' helpers
   config.include EmberCart::Engine.routes.url_helpers
+
+  # Mixin factory_girl methods
   config.include FactoryGirl::Syntax::Methods
 
   # ## Mock Framework

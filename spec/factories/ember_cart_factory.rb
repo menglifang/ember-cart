@@ -22,5 +22,15 @@ module EmberCart
       price { cartable.price }
       quantity 1
     end
+
+    factory :cart_item_with_children, parent: :cart_item do
+      ignore do
+        children_count 5
+      end
+
+      after_build do |ci, e|
+        ci.children = FactoryGirl.build_list(:cart_item, e.children_count, parent: ci)
+      end
+    end
   end
 end

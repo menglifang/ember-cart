@@ -1,11 +1,11 @@
 module EmberCart
   class CartItem < ActiveRecord::Base
-    acts_as_api
-
     belongs_to :cartable, polymorphic: true
     belongs_to :cart
     belongs_to :parent, class_name: 'EmberCart::CartItem', foreign_key: :parent_id
     has_many :children, class_name: 'EmberCart::CartItem', foreign_key: :parent_id, dependent: :destroy
+
+    accepts_nested_attributes_for :children
 
     validates :cartable, presence: true, cartable: true
     validates :cart, presence: true
@@ -14,6 +14,7 @@ module EmberCart
     validates :quantity, presence: true, numericality: { greater_than: 0 }
     validates :base_quantity, presence: true, numericality: { greater_than: 0 }
 
+    acts_as_api
     api_accessible :default do |t|
       t.add :id
       t.add :parent_id
@@ -32,7 +33,8 @@ module EmberCart
 
     before_validation :set_base_quantity
 
-    attr_accessible :cartable, :parent_id
+    attr_accessible :cartable, :cartable_id, :cartable_type
+    attr_accessible :cart_id, :parent_id, :children_attributes
     attr_accessible :name, :price, :base_quantity, :quantity, :group
 
     def total

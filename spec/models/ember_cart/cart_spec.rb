@@ -125,6 +125,25 @@ module EmberCart
         its(:total) { should == product.price + another_product.price }
         its(:cart_items) { should have(2).items }
       end
+
+      context 'when adding an item with children' do
+        let(:another_product) { create(:product, name: 'another product for test', price: 10) }
+
+        before do
+          cart.add_item(product,
+                        children_attributes: [{
+                          cart_id: cart.id,
+                          cartable_id: another_product.id,
+                          cartable_type: another_product.class.name,
+                          name: another_product.name,
+                          price: another_product.price,
+                          quantity: 1
+                        }])
+        end
+
+        its(:cart_items) { should have(2).items }
+        its(:cart_items) { subject.first.children.should have(1).item }
+      end
     end
   end
 end

@@ -42,6 +42,9 @@ module EmberCart
 
     private
     def create_item(cartable, opts)
+      children_attrs = opts[:children_attributes] || []
+      children_attrs.map { |attrs| attrs[:cart_id] = id }
+
       cart_items.create(
         cartable: cartable,
         name: cartable.cartable_name,
@@ -49,14 +52,15 @@ module EmberCart
         base_quantity: opts[:base_quantity],
         quantity: opts[:quantity] || 1,
         group: opts[:group],
-        parent_id: opts[:parent_id]
+        parent_id: opts[:parent_id],
+        children_attributes: children_attrs
       )
     end
     
     public
     class << self
       def of(shopper)
-        shopper ? Cart.where(shopper: shopper) : []
+        Cart.where(shopper: shopper)
       end
     end
   end

@@ -20,6 +20,7 @@ group :test do
   gem 'capybara-webkit'
   gem 'rack_session_access'
   gem 'shoulda-matchers'
+  gem 'json_spec'
 end
 
 # The followings are used by the dummy application

@@ -10,6 +10,7 @@ require 'shoulda-matchers'
 require 'pry'
 require 'rack_session_access'
 require 'rack_session_access/capybara'
+require 'json_spec'
 
 # Set up capybara
 require 'capybara/rails'
@@ -21,11 +22,14 @@ Capybara.javascript_driver = :webkit
 Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each {|f| require f}
 
 RSpec.configure do |config|
-  # Mixin routes' helpers
+  # Mixin routes helpers
   config.include EmberCart::Engine.routes.url_helpers
 
   # Mixin factory_girl methods
   config.include FactoryGirl::Syntax::Methods
+
+  # Mixin json_spec helpers
+  config.include JsonSpec::Helpers
 
   # ## Mock Framework
   #

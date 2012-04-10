@@ -11,18 +11,15 @@ module EmberCart
       it { should respond_with_content_type /json/ }
     end
 
-    #describe 'DELETE destroy' do
-      #let(:cart) { FactoryGirl.create(:cart) }
+    describe 'PUT clear' do
+      let(:cart) { create(:cart_with_items) }
 
-      #before do
-        #Cart.should_receive(:find_by_id).and_return(cart)
-        #cart.should_receive(:destroy)
+      before do
+        put :clear, id: cart.id, format: :json#, use_route: :ember_cart
+      end
 
-        #delete :destroy, format: :json, use_route: :rightnow_oms
-      #end
-
-      #it { should respond_with :ok }
-      #it { should respond_with_content_type /json/ }
-    #end
+      it { should respond_with :ok }
+      it { should respond_with_content_type /json/ }
+    end
   end
 end

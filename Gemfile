@@ -11,7 +11,7 @@ gem 'mysql2'
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
-  gem 'konacha', git: 'https://github.com/jfirebaugh/konacha.git'
+  gem 'konacha'
 end
 
 group :test do

@@ -17,5 +17,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '~> 3.2.3'
   s.add_dependency 'ember-rails', '>= 0.2.4'
+  s.add_dependency 'coffee-rails', '>= 3.2.2'
   s.add_dependency 'acts_as_api', '>= 0.3.11'
 end

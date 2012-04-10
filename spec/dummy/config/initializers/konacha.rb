@@ -1,4 +1,6 @@
 Konacha.configure do |config|
-  config.spec_dir  = "spec/javascripts"
+  config.spec_dir  = "../javascripts"
+
+  require 'capybara-webkit'
   config.driver    = :webkit
 end if defined?(Konacha)

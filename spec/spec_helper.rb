@@ -8,9 +8,12 @@ require 'ffaker'
 require 'factory_girl_rails'
 require 'shoulda-matchers'
 require 'pry'
+require 'rack_session_access'
+require 'rack_session_access/capybara'
 
 # Set up capybara
 require 'capybara/rails'
+require 'capybara-webkit'
 Capybara.javascript_driver = :webkit
 
 # Requires supporting ruby files with custom matchers and macros, etc,

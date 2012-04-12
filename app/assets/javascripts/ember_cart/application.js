@@ -3,5 +3,6 @@
 //
 //= require ember
 //= require ember-data
+//= require ember-i18n
 //
-//= require_tree .
+//= require ./config/app

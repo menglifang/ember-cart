@@ -5,9 +5,11 @@
 #= require ember-data
 #= require ember-i18n
 #
+#= require Faker
+#= require sinon
+#
 #= require_self
 #
-#= require ember_cart/ember/app
 #= require ember_cart/config/app
 #
 #= require_tree ./support

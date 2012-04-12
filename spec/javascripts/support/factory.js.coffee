@@ -17,10 +17,6 @@ window.Factory =
     opts = Factory.factories[name]['opts']
     klass = opts['class']
 
-    unless Factory.store
-      Factory.store = DS.Store.create(revision: 4)
-      console.warn('An ember data store is not assigned. A default store is created')
-
     Factory.store.load(klass, object)
     Factory.store.find(klass, object.id)
 

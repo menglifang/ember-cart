@@ -1,6 +1,8 @@
 Konacha.configure do |config|
   config.spec_dir  = "../javascripts"
 
-  require 'capybara-webkit'
-  config.driver    = :webkit
+  # Got errors when using webkit
+  #require 'capybara-webkit'
+  #config.driver    = :webkit
+  config.driver     = :selenium
 end if defined?(Konacha)

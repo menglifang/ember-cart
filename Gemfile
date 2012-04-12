@@ -7,6 +7,7 @@ gemspec
 
 # Development dependencies
 gem 'mysql2'
+gem 'ember-rails', git: 'https://github.com/emberjs/ember-rails.git'
 
 group :development, :test do
   gem 'pry'

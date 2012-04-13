@@ -1,0 +1,6 @@
+<div class="ec-cart-bar">
+  {{t labels.shopping_cart}} ({{cartItemsCount}})
+</div>
+{{#unless isCartsHidden}}
+  {{view EmberCart.MiniCartList cartsBinding="carts"}}
+{{/unless}}

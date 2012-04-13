@@ -1,0 +1,30 @@
+<dt>
+  <ul>
+    <li class="ec-name" {{ action "toggleChildren" }}>{{ cartItem.name }}</li>
+    <li class="ec-others">
+      <div class="ec-price ec-money">
+        {{t currency.unit}}{{ cartItem.price }}x{{ cartItem.quantity }}
+      </div>
+      <div class="ec-delete">
+        <a href="#" {{ action "remove" }}>{{t buttons.delete}}</a>
+      </li>
+    </li>
+    <div class='ec-clear' />
+  </ul>
+</dt>
+{{#unless isChildrenHidden}}
+  <dd>
+    {{#each cartItem.children }}
+      <ul class='ec-child'>
+        <li class="ec-name">{{ name }}</li>
+        <li class="ec-others">
+          <div class="ec-price ec-money">
+            {{t currency.unit}}{{ price }}x{{ quantity }}
+          </div>
+          <div class="ec-delete" />
+        </li>
+        <div class="ec-clear" />
+      </ul>
+    {{/each}}
+  </dd>
+{{/unless}}

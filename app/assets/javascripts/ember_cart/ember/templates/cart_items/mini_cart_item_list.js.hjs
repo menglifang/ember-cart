@@ -1,0 +1,3 @@
+{{#each cartItems}}
+  {{view EmberCart.MiniCartItem cartItemBinding="this"}}
+{{/each}}

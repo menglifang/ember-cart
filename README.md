@@ -55,6 +55,42 @@ def create_carts_for(shopper)
 end
 ```
 
+## I18n
+
+ember-cart supports I18n now. By default it only includes two
+locales: en and zh_CN, but you can create your own locales easily.
+You just need to define your translations, for example:
+
+```javascript
+  EmberCart.locales.en = { 
+    'cart.total': 'Total',
+
+    'cart_item.name': 'Name',
+    'cart_item.price': 'Price',
+    'cart_item.quantity': 'Quantity',
+    'cart_item.total': 'Total',
+
+    'currency.unit': '$',
+    
+    'buttons.check_cart': 'Check Cart',
+    'buttons.delete': 'Delete',
+    'buttons.clean_cart': 'Clean Up',
+    'buttons.continue_to_shop': 'Continue To Shop',
+    'buttons.new_order': 'Submit',
+
+    'titles.cart': 'My Shopping Cart',
+
+    'alerts.saving_cart': 'Cart is saving, please wait...',
+
+    'confirmations.delete_cart_item': 'Are you sure to delete this cart items?',
+    'confirmations.clean_up_cart': 'Are you sure to clean up the cart?',
+
+    'labels.shopping_cart': 'Shopping Cart',
+
+    'links.checkout': 'Checkout'
+  };
+```
+
 ## Development
 
 ember-cart is developed with Ruby 1.9.3-p125 and Rails 3.2.3
@@ -73,11 +109,29 @@ Gemfile and add the adapters by yourself.
   bundle exec rake app:db:seed
   bundle exec rake app:db:test:prepare
 
-  rspec
+  bundle exec rspec
 
   # Start the dummy application
   rails s
 ```
+
+ember-cart set up the front side test env by
+[konacha](https://github.com/jfirebaugh/konacha). konacha provides two
+ways to run your js tests.
+
+- Start up an isolated server to run the tests.
+
+  ```bash
+    bundle exec rake app:konacha:serve
+  ```
+
+  and then open your browser to visit http://localhost:3500
+
+- Run the tests in the shell.
+
+  ```bash
+    bundle exec rake app:konacha:run
+  ```
 
 ## Licence
 This project rocks and uses MIT-LICENSE.

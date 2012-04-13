@@ -2,7 +2,7 @@
 
 ## Description
 
-ember-cart a rails mountable engine which provides a cart solution for e-commerce sites. It is deeply inspired by rightnow_oms and its front side is created based on ember and ember-data.
+ember-cart a rails mountable engine which provides a cart solution for e-commerce sites. It is heavily inspired by rightnow_oms and its front side is created based on ember and ember-data.
 
 ## Installation
 
@@ -49,8 +49,8 @@ override `create_carts_for(shopper)` method and create your carts in it.
 ```ruby
 def create_carts_for(shopper)
   [
-    Cart.create(name: 'First Cart', shopper: shopper),
-    Cart.create(name: 'Second Cart', shopper: shopper)
+    EmberCart::Cart.create(name: 'First Cart', shopper: shopper),
+    EmberCart::Cart.create(name: 'Second Cart', shopper: shopper)
   ]
 end
 ```
@@ -116,7 +116,7 @@ Gemfile and add the adapters by yourself.
 ```
 
 ember-cart set up the front side test env by
-[konacha](https://github.com/jfirebaugh/konacha). konacha provides two
+[konacha](https://github.com/jfirebaugh/konacha). it provides two
 ways to run your js tests.
 
 - Start up an isolated server to run the tests.

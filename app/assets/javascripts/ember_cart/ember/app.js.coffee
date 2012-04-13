@@ -8,11 +8,13 @@
 window.EmberCart = Ember.Application.create
   rootElement: '#ember-cart'
 
+  locales: {}
+
   config: Ember.Object.create()
 
   configure: (reconfigure) ->
     reconfigure(EmberCart.config) if reconfigure
 
     defaultLocale = EmberCart.config.get('defaultLocale') || 'en'
-    locale = 'locales.' + defaultLocale
-    Ember.I18n.translations = EmberCart.config.get(locale)
+    #locale = 'locales.' + defaultLocale
+    Ember.I18n.translations = EmberCart.locales[defaultLocale]

@@ -23,3 +23,5 @@ EmberCart.configure (config)->
     'confirmations.clean_up_cart': '您确定要清空您的购物车吗？'
 
     'labels.shopping_cart': '购物车'
+    
+    'links.checkout': '去结算'

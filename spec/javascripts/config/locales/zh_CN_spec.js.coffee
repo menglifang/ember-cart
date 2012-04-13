@@ -6,4 +6,4 @@ describe 'Locale zh_CN', ->
 
   enKeys.forEach (key) ->
     desc = 'has key %@'.fmt key
-    it desc, -> zh_CN[key]?.should.be.exist
+    it desc, -> zh_CN[key].should.be.exist

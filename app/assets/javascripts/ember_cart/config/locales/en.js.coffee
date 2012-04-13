@@ -23,3 +23,5 @@ EmberCart.configure (config)->
     'confirmations.clean_up_cart': 'Are you sure to clean up the cart?'
 
     'labels.shopping_cart': 'Shopping Cart'
+
+    'links.checkout': 'Checkout'

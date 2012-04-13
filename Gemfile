@@ -23,6 +23,7 @@ group :test do
   gem 'rack_session_access'
   gem 'shoulda-matchers'
   gem 'json_spec'
+  gem 'fivemat'
 end
 
 # The followings are used by the dummy application

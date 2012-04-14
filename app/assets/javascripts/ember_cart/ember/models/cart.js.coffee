@@ -1,5 +1,6 @@
 EmberCart.Cart = DS.Model.extend
   name: DS.attr('string')
+  current: DS.attr('boolean')
   cart_items: DS.hasMany('EmberCart.CartItem')
 
   cartItemsCount: Ember.computed( ->

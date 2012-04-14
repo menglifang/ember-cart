@@ -12,25 +12,48 @@ describe 'EmberCart.cartsController', ->
   afterEach ->
     Ember.run -> Factory.store.destroy()
 
+  describe 'instance methods', ->
+    cart = null
+
+    beforeEach -> cart = Factory.create('cart', current: true)
+    
+    afterEach -> cart = null
+
+    describe '#addCartItem', ->
+      it 'adds a cart item to the current cart', ->
+        cartItemAttrs = Factory.attributeFor('cartItem')
+
+        mock = sinon.mock(cart)
+        mock.expects('addCartItem').withExactArgs(cartItemAttrs).once()
+
+        EmberCart.cartsController.addCartItem(cartItemAttrs)
+
+        mock.verify()
+
+
   describe 'properties', ->
+    firstCart = null
+    secondCart = null
+
+    beforeEach ->
+      firstCart = Factory.create('cart', name: 'First', current: true)
+      firstCart.addCartItem(Factory.attributeFor(
+        'cartItem', cartable_id: 1, quantity: 2
+      ))
+
+      secondCart = Factory.create('cart', name: 'Second')
+      secondCart.addCartItem(Factory.attributeFor(
+        'cartItem', cartable_id: 2, quantity: 1
+      ))
+
+    afterEach ->
+      firstCart = null
+      secondCart = null
+
+    describe 'currentCart', ->
+      it 'returns the current cart', ->
+        EmberCart.cartsController.get('currentCart').should.equal(firstCart)
+
     describe 'countCartItems', ->
-      describe 'when having a cart', ->
-        it 'counts the cart items', ->
-          cart = Factory.create('cart')
-          cart.addCartItem(Factory.attributeFor('cartItem', quantity: 2))
-
-          EmberCart.cartsController.get('cartItemsCount').should.equal(2)
-
-      describe 'when having more than one carts', ->
-        it 'counts the cart items in all carts', ->
-          firstCart = Factory.create('cart', name: 'First')
-          firstCart.addCartItem(Factory.attributeFor('cartItem',
-            cartable_id: 1, quantity: 2)
-          )
-
-          secondCart = Factory.create('cart', name: 'Second')
-          secondCart.addCartItem(Factory.attributeFor('cartItem',
-            cartable_id: 2, quantity: 1)
-          )
-
-          EmberCart.cartsController.get('cartItemsCount').should.equal(3)
+      it 'counts the cart items in all carts', ->
+        EmberCart.cartsController.get('cartItemsCount').should.equal(3)

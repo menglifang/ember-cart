@@ -1,4 +1,6 @@
 module EmberCart
+  class CurrentCartNotFound < StandardError; end
+
   module ControllerExtensions
     extend ActiveSupport::Concern
 
@@ -21,7 +23,16 @@ module EmberCart
     end
 
     def current_cart
-      Cart.find(cookies[:current_cart_id])
+      ember_carts.each { |c| c.current = false }
+
+      current_cart = load_current_cart_from_cookies
+      unless current_cart
+        current_cart = ember_carts.first if ember_carts.size == 1
+      end
+
+      raise CurrentCartNotFound unless current_cart
+
+      set_as_current(current_cart) and return current_cart
     end
 
     protected
@@ -42,6 +53,15 @@ module EmberCart
 
     def save_carts_to_cookies
       cookies[:ember_carts_ids] = @carts.map(&:id)
+    end
+
+    def load_current_cart_from_cookies
+      Cart.find_by_id(cookies[:current_cart_id])
+    end
+
+    def set_as_current(cart)
+      cart.current = true
+      cookies[:current_cart_id] = cart.id
     end
   end
 end

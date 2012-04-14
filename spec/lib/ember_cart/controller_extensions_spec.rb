@@ -57,6 +57,7 @@ module EmberCart
 
         it 'sets it as current' do
           controller.current_cart.should == carts.first
+          controller.current_cart.current.should be_true
           controller.cookies[:current_cart_id].should == carts.first.id
         end
       end
@@ -72,6 +73,7 @@ module EmberCart
 
           it 'returns the current cart' do
             controller.current_cart.should == carts.first
+            controller.current_cart.current.should be_true
           end
         end
 

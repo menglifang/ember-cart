@@ -64,7 +64,7 @@ module EmberCart
     end
 
     def load_current_cart_from_cookies
-      Cart.find_by_id(cookies[:current_cart_id])
+      ember_carts.select { |i| i.id == cookies[:current_cart_id] }.first
     end
 
     def set_as_current(cart)

@@ -3,8 +3,6 @@
 #= require ../ember/app
 #
 #= require_tree ./locales
-#
-#= require ./store
 
 EmberCart.configure (config) ->
   #config.set 'locales.en', EmberCart.locales.en

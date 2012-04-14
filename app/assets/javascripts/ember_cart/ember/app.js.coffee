@@ -18,3 +18,7 @@ window.EmberCart = Ember.Application.create
     defaultLocale = EmberCart.config.get('defaultLocale') || 'en'
     #locale = 'locales.' + defaultLocale
     Ember.I18n.translations = EmberCart.locales[defaultLocale]
+
+EmberCart.store = DS.Store.create
+  revision: 4
+  adapter: DS.RESTAdapter.create(bulkCommit: false, namespace: 'ember_cart')

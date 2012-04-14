@@ -1,2 +1,4 @@
 EmberCart.cartsController = Ember.ArrayController.create
-  content: []
+  content: Ember.computed( ->
+    EmberCart.store.findAll(EmberCart.Cart)
+  ).property()

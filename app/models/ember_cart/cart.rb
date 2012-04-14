@@ -7,10 +7,13 @@ module EmberCart
     api_accessible :default do |t|
       t.add :id
       t.add :name
+      t.add :current
       t.add :cart_items, template: :default
     end
 
     validates :name, presence: true
+
+    attr_accessor :current
 
     attr_accessible :name, :shopper
 

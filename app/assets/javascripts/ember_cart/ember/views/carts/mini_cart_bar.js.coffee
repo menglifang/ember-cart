@@ -7,8 +7,10 @@ EmberCart.MiniCartBar = Ember.View.extend
   cartsBinding: 'EmberCart.cartsController.content'
   cartItemsCountBinding: 'EmberCart.cartsController.cartItemsCount'
 
+  isCartsHidden: true
+
   mouseEnter: ->
-    $('.ec-mini-cart-list').show()
+    @set('isCartsHidden', false)
 
   mouseLeave: ->
-    $('.ec-mini-cart-list').hide()
+    @set('isCartsHidden', true)

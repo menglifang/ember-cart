@@ -7,9 +7,11 @@ module EmberCart
     end
 
     def ember_carts
-      shopper = defined?(current_user) ? current_user : nil
+      return @carts unless @carts.blank?
 
-      @carts = load_carts_for(shopper) if @carts.blank?
+      shopper = defined?(current_user) ? current_user : nil
+      @carts = load_carts_for(shopper)
+
       @carts = load_carts_from_cookies if @carts.blank?
       @carts = create_carts_for(shopper) if @carts.blank?
 
@@ -33,7 +35,9 @@ module EmberCart
     end
 
     def load_carts_from_cookies
-      Cart.find(cookies[:ember_carts_ids]) if cookies[:ember_carts_ids]
+      unless cookies[:ember_carts_ids].blank?
+        Cart.where(id: cookies[:ember_carts_ids])
+      end
     end
 
     def save_carts_to_cookies

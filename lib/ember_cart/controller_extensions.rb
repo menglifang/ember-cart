@@ -6,6 +6,8 @@ module EmberCart
 
     def load_or_create_carts
       @carts ||= ember_carts
+      
+      find_current_cart
     end
 
     def ember_carts
@@ -23,16 +25,7 @@ module EmberCart
     end
 
     def current_cart
-      ember_carts.each { |c| c.current = false }
-
-      current_cart = load_current_cart_from_cookies
-      unless current_cart
-        current_cart = ember_carts.first if ember_carts.size == 1
-      end
-
-      raise CurrentCartNotFound unless current_cart
-
-      set_as_current(current_cart) and return current_cart
+      find_current_cart
     end
 
     protected
@@ -53,6 +46,21 @@ module EmberCart
 
     def save_carts_to_cookies
       cookies[:ember_carts_ids] = @carts.map(&:id)
+    end
+
+    def find_current_cart
+      return @current_cart if @current_cart
+
+      ember_carts.each { |c| c.current = false }
+
+      @current_cart = load_current_cart_from_cookies
+      unless @current_cart
+        @current_cart = ember_carts.first if ember_carts.size == 1
+      end
+
+      raise CurrentCartNotFound unless @current_cart
+
+      set_as_current(@current_cart) and return @current_cart
     end
 
     def load_current_cart_from_cookies

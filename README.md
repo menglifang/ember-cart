@@ -115,7 +115,7 @@ Gemfile and add the adapters by yourself.
   rails s
 ```
 
-ember-cart set up the front side test env by
+ember-cart sets up the front side test env by
 [konacha](https://github.com/jfirebaugh/konacha). it provides two
 ways to run your js tests.
 

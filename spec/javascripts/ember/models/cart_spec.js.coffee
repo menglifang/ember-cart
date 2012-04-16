@@ -109,13 +109,9 @@ describe "EmberCart.Cart", ->
         cartItem = null
 
       it 'removes the cart item from the cart and deletes it', ->
-        mock = sinon.mock(cartItem)
-        mock.expects('deleteRecord').once()
-
         cart.removeCartItem(cartItem)
 
         cart.getPath('cart_items.length').should.equal(0)
-        mock.verify()
 
     describe '#increaseCartItem', ->
 

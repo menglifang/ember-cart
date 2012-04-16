@@ -12,7 +12,7 @@ window.Factory =
 
   create: (name, config)->
     object = Factory.attributeFor(name, config)
-    object.id = Factory.generateId(name) unless object.id
+    object.id = Factory.generateId(name)
     
     opts = Factory.factories[name]['opts']
     klass = opts['class']

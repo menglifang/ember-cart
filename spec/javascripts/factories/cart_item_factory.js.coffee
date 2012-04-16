@@ -6,7 +6,6 @@ Factory.define 'cartItem', class: EmberCart.CartItem, (i)->
   i.price = 10
   i.quantity = 1
   i.group = Faker.Lorem.words(1).join(' ')
-  i.cart_id = 1
 
 Factory.define 'cartItemWithChildren', class: EmberCart.CartItem, (i)->
   apply(i,

@@ -25,7 +25,10 @@ EmberCart.Cart = DS.Model.extend
     return @createCartItem(attrs) if attrs.mergable == false
 
     cartItem = @findCartItemByCartable(attrs.cartable_type, attrs.cartable_id)
-    return cartItem.increase() if cartItem
+
+    if cartItem
+      cartItem.increase()
+      return cartItem
 
     @createCartItem(attrs)
 

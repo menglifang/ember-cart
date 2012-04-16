@@ -72,13 +72,32 @@ describe "EmberCart.Cart", ->
 
             cart.getPath('cart_items.length').should.equal(2)
 
-      describe 'when the item has children', ->
-        beforeEach ->
-          cart.addCartItem(Factory.attributeFor('cartItemWithChildren'))
+      describe 'when adding items with children', ->
+        cartItemAttrs = null
 
-        it 'creates the children', ->
-          cartItem = cart.getPath('cart_items.firstObject')
-          cartItem.getPath('children.length').should.equal(3)
+        beforeEach ->
+          cartItemAttrs = Factory.attributeFor('cartItemWithChildren',
+            quantity: 1
+          )
+
+        afterEach -> cartItemAttrs = null
+
+        describe 'which do not exist', ->
+          beforeEach -> cart.addCartItem(cartItemAttrs)
+
+          it 'creates the children', ->
+            cartItem = cart.getPath('cart_items.firstObject')
+            cartItem.getPath('children.length').should.equal(3)
+
+        describe 'which exist', ->
+          beforeEach ->
+            cart.addCartItem(cartItemAttrs)
+            cart.addCartItem(cartItemAttrs)
+
+          it 'merges the children', ->
+            children = cart.getPath('cart_items.firstObject.children')
+            children.get('length').should.equal(3)
+            children.getPath('firstObject.quantity').should.equal(2)
 
     describe '#removeCartItem', ->
       cartItem = null

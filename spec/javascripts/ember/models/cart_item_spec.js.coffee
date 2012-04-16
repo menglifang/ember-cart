@@ -7,14 +7,27 @@ describe 'EmberCart.CartItem', ->
       adapter: DS.RESTAdapter.create(bulkCommit: false)
       isDefaultStore: true
 
-  afterEach -> Factory.store.destroy()
+  afterEach ->
+    Ember.run -> Factory.store.destroy()
 
   describe '#increase', ->
-    it 'increase the quantity', ->
-      cartItem = Factory.create('cartItem')
-      cartItem.increase()
+    describe 'when having no children', ->
+      it 'increase the quantity', ->
+        cartItem = Factory.create('cartItem')
+        cartItem.increase()
 
-      cartItem.get('quantity').should.equal(2)
+        cartItem.get('quantity').should.equal(2)
+
+    describe 'when having children', ->
+      it 'increases the quantities of both parent and children', ->
+        parent = Factory.create('cartItem', cartable_id: 1, quantity: 1)
+        parent.get('children').pushObject(Factory.create('cartItem',
+          cartable_id: 2, quantity: 1))
+        
+        parent.increase()
+
+        parent.get('quantity').should.equal(2)
+        parent.getPath('children.firstObject.quantity').should.equal(2)
 
   describe '#createChildren', ->
     it 'creates a child', ->

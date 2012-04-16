@@ -14,6 +14,8 @@ EmberCart.CartItem = DS.Model.extend
 
   increase: ->
     @set('quantity', @get('quantity') + 1)
+    @get('children').forEach (c) ->
+      c.increase()
 
   createChildren: (attrs) ->
     @get('children').pushObject(EmberCart.CartItem.createRecord(attrs))

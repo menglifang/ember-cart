@@ -55,12 +55,12 @@ describe 'EmberCart.MiniCartItem', ->
 
       miniCartItem.$('dt').length.should.equal(1)
 
-      miniCartItem.$('dt li.ec-name').text().should.
+      miniCartItem.$('dt li.ec-cart-item-name').text().should.
         equal(cartItem.get('name'))
-      miniCartItem.$('dt div.ec-price').text().trim().should.
+      miniCartItem.$('dt div.ec-cart-item-price').text().trim().should.
         equal(
           Ember.I18n.t('currency.unit') +
-          cartItem.get('price') + 'x' +
+          cartItem.get('formattedPrice') + 'x' +
           cartItem.get('quantity')
         )
       miniCartItem.$('dt div.ec-delete').text().trim().should.
@@ -89,8 +89,8 @@ describe 'EmberCart.MiniCartItem', ->
     it 'toggles the children when clicking on the name of the parent', ->
       Ember.run -> miniCartItem.appendTo('#konacha')
 
-      miniCartItem.$('dt li.ec-name').click()
+      miniCartItem.$('dt li.ec-cart-item-name').click()
       miniCartItem.get('isChildrenHidden').should.be.false
 
-      miniCartItem.$('dt li.ec-name').click()
+      miniCartItem.$('dt li.ec-cart-item-name').click()
       miniCartItem.get('isChildrenHidden').should.be.true

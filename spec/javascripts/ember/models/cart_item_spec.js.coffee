@@ -15,3 +15,10 @@ describe 'EmberCart.CartItem', ->
       cartItem.increase()
 
       cartItem.get('quantity').should.equal(2)
+
+  describe '#createChildren', ->
+    it 'creates a child', ->
+      cartItem = Factory.create('cartItem')
+      cartItem.createChildren(Factory.attributeFor('cartItem', cartable_id: 2))
+
+      cartItem.getPath('children.length').should.equal(1)

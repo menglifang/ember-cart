@@ -49,8 +49,6 @@ module EmberCart
     end
 
     def find_current_cart
-      return @current_cart if @current_cart
-
       ember_carts.each { |c| c.current = false }
 
       @current_cart = load_current_cart_from_cookies

@@ -9,8 +9,15 @@ Factory.define 'cartItem', class: EmberCart.CartItem, (i)->
   i.cart_id = 1
 
 Factory.define 'cartItemWithChildren', class: EmberCart.CartItem, (i)->
-  apply(i, Factory.attributeFor('cartItem', name: 'parent'))
+  apply(i,
+    Factory.attributeFor('cartItem', name: Faker.Lorem.words().join(' '))
+  )
 
-  i.children = [Factory.attributeFor('cartItem',
-    id: 2, cartable_id: 2, name: Faker.Lorem.words().join(' '), parent_id: 1)]
+  childId = 2
+  childCartableId = 2
 
+  i.children = []
+  i.children.push(Factory.attributeFor('cartItem',
+    cartable_id: childCartableId++,
+    name: Faker.Lorem.words().join(' ')
+  )) for t in [0..2]

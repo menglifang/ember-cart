@@ -72,6 +72,14 @@ describe "EmberCart.Cart", ->
 
             cart.getPath('cart_items.length').should.equal(2)
 
+      describe 'when the item has children', ->
+        beforeEach ->
+          cart.addCartItem(Factory.attributeFor('cartItemWithChildren'))
+
+        it 'creates the children', ->
+          cartItem = cart.getPath('cart_items.firstObject')
+          cartItem.getPath('children.length').should.equal(3)
+
     describe '#removeCartItem', ->
       cartItem = null
 

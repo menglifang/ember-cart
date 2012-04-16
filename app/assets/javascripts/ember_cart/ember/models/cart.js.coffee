@@ -35,8 +35,14 @@ EmberCart.Cart = DS.Model.extend
 
   # @private
   createCartItem: (attrs) ->
+    children = attrs.children || []
+
     cartItem = EmberCart.CartItem.createRecord(attrs)
     @get('cart_items').pushObject(cartItem)
+
+    cartItem.createChildren(c) for c in children
+
+    cartItem
 
   # @private
   findCartItemByCartable: (type, id) ->

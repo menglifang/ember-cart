@@ -6,7 +6,7 @@ EmberCart.CartItem = DS.Model.extend
   quantity: DS.attr('number')
   cart: DS.belongsTo('EmberCart.Cart')
   parent: DS.belongsTo('EmberCart.CartItem')
-  children: DS.hasMany('EmberCart.CartItem', embedded: true, defaultValue: [])
+  children: DS.hasMany('EmberCart.CartItem')
 
   formattedPrice: Ember.computed( ->
     round(@get('price'), 2)
@@ -20,3 +20,7 @@ EmberCart.CartItem = DS.Model.extend
   createChildren: (attrs) ->
     @get('children').pushObject(EmberCart.CartItem.createRecord(attrs))
 
+  deleteRecord: ->
+    @get('children').forEach (c) -> c.deleteRecord()
+
+    @_super()

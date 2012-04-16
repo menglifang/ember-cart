@@ -9,7 +9,7 @@ ember-cart a rails mountable engine which provides a cart solution for e-commerc
 [ember-cart-example](https://github.com/ichid/ember-cart-example) shows
 how to build a shopping cart in rails application by using ember-cart.
 The example have been deployed on heroku. Visit the [Online
-Demo](http://simple-lightning-5498.herokuapp.com/).
+Demo](http://ember-cart-item.herokuapp.com/).
 
 ## Installation
 

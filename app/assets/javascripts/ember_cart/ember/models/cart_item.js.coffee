@@ -18,7 +18,7 @@ EmberCart.CartItem = DS.Model.extend
       c.increase()
 
   createChildren: (attrs) ->
-    @get('children').pushObject(EmberCart.CartItem.createRecord(attrs))
+    @get('children').createRecord(attrs)
 
   deleteRecord: ->
     @get('children').forEach (c) -> c.deleteRecord()

@@ -33,20 +33,14 @@ EmberCart.Cart = DS.Model.extend
     @createCartItem(attrs)
 
   removeCartItem: (cartItem) ->
-    @get('cart_items').popObject(cartItem)
-
-    # FIXME
-    try
-      cartItem.deleteRecord()
-    catch error
-      console.error(error.message)
+    @get('cart_items').removeObject(cartItem)
+    cartItem.deleteRecord()
 
   # @private
   createCartItem: (attrs) ->
     children = attrs.children || []
 
-    cartItem = EmberCart.CartItem.createRecord(attrs)
-    @get('cart_items').pushObject(cartItem)
+    cartItem = @get('cart_items').createRecord(attrs)
 
     cartItem.createChildren(c) for c in children
 

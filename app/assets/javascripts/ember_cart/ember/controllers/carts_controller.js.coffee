@@ -19,3 +19,5 @@ EmberCart.cartsController = Ember.ArrayController.create
 
   addCartItem: (attrs) ->
     @get('currentCart').addCartItem(attrs)
+
+    EmberCart.store.commit()

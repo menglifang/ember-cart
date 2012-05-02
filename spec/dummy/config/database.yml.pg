@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  database: ember_cart_dev
+  host: localhost
+
+test:
+  adapter: postgresql
+  database: ember_cart_test
+  host: localhost

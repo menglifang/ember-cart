@@ -29,6 +29,6 @@ describe "Carts" do
     subject { response }
 
     its(:status) { should == 200 }
-    its(:body) { should have_json_size(0).at_path("cart/cart_items") }
+    its(:body) { should have_json_size(0).at_path("cart/cart_item_ids") }
   end
 end

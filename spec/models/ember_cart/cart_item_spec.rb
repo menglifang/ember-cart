@@ -61,6 +61,7 @@ module EmberCart
       it { should have_key :id }
       it { should have_key :cart_id }
       it { should have_key :parent_id }
+      it { should have_key :child_ids }
       it { should have_key :cartable_id }
       it { should have_key :cartable_type }
       it { should have_key :name }

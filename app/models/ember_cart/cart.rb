@@ -8,7 +8,7 @@ module EmberCart
       t.add :id
       t.add :name
       t.add :current
-      t.add :cart_items, template: :default
+      t.add lambda { |c| c.cart_items.pluck(:id) }, as: :cart_item_ids
     end
 
     validates :name, presence: true

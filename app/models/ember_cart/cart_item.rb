@@ -19,7 +19,7 @@ module EmberCart
       t.add :id
       t.add :cart_id
       t.add :parent_id
-      t.add :children, template: :default
+      t.add lambda { |i| i.children.pluck(:id) }, as: :child_ids
       t.add :cartable_id
       t.add :cartable_type
       t.add :name

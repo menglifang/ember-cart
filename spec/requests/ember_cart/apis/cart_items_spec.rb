@@ -51,8 +51,8 @@ describe 'CartItems' do
       subject { response.body }
 
       specify { response.status.should == 201 }
-      it { should have_json_path "cart_item/children" }
-      it { should have_json_size(1).at_path("cart_item/children") }
+      it { should have_json_path "cart_item/child_ids" }
+      it { should have_json_size(1).at_path("cart_item/child_ids") }
     end
   end
 
@@ -87,7 +87,6 @@ describe 'CartItems' do
 
       specify { response.status.should == 200 }
       specify { subject["quantity"].should == quantity }
-      specify { subject["children"].first["quantity"].should == quantity }
     end
   end
 

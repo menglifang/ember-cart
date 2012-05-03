@@ -7,7 +7,7 @@ gemspec
 
 # Development dependencies
 gem 'pg'
-gem 'ember-rails', git: 'https://github.com/emberjs/ember-rails.git'
+gem 'ember-rails'
 
 group :development, :test do
   gem 'pry'

@@ -16,6 +16,17 @@ describe "EmberCart.Cart", ->
 
     Ember.run -> Factory.store.destroy()
 
+  describe 'loading cart with items', ->
+    it 'loads the items', ->
+      cartJson = Factory.attributeFor('cartWithItems', id: 1)
+      Factory.store.load(EmberCart.Cart, cartJson.id, cartJson)
+
+      cart = Factory.store.find(EmberCart.Cart, cartJson.id)
+      cart.getPath('cart_items.length').should.equal(3)
+      cart.getPath('cart_items.firstObject.name').should.equal(
+        cartJson.cart_items[0].name
+      )
+
   describe 'instance methods', ->
     describe '#findCartItemByCartable', ->
       it 'finds out the cart item', ->
@@ -102,22 +113,31 @@ describe "EmberCart.Cart", ->
     describe '#removeCartItem', ->
       cartItem = null
 
-      beforeEach ->
-        cartItem = cart.addCartItem(Factory.attributeFor('cartItem'))
-
       afterEach ->
         cartItem = null
 
-      it 'removes the cart item from the cart and deletes it', ->
-        cart.removeCartItem(cartItem)
+      describe 'having no child', ->
+        beforeEach ->
+          cartItem = cart.addCartItem(Factory.attributeFor('cartItem'))
 
-        cart.getPath('cart_items.length').should.equal(0)
+        it 'removes the cart item from the cart and deletes it', ->
+          cart.removeCartItem(cartItem)
 
-    describe '#increaseCartItem', ->
+          cart.getPath('cart_items.length').should.equal(0)
 
-    describe '#decreaseCartItem', ->
+      describe 'having children', ->
+        beforeEach ->
+          cartItem = cart.addCartItem(
+            Factory.attributeFor('cartItemWithChildren')
+          )
 
-    describe '#cleanUp', ->
+        it 'removes the cart item and its children', ->
+          Factory.store.findAll(EmberCart.CartItem).get('length').should.equal(4)
+
+          cart.removeCartItem(cartItem)
+
+          cart.getPath('cart_items.length').should.equal(0)
+          Factory.store.findAll(EmberCart.CartItem).get('length').should.equal(0)
 
   describe 'properties', ->
     beforeEach ->

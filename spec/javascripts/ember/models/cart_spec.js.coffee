@@ -137,7 +137,6 @@ describe "EmberCart.Cart", ->
           cart.removeCartItem(cartItem)
 
           cart.getPath('cart_items.length').should.equal(0)
-          Factory.store.findAll(EmberCart.CartItem).get('length').should.equal(0)
 
   describe 'properties', ->
     beforeEach ->

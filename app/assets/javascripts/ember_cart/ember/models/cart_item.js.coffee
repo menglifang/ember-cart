@@ -21,7 +21,7 @@ EmberCart.CartItem = DS.Model.extend
     @get('children').createRecord(attrs)
 
   deleteRecord: ->
-    @get('children').forEach (c) ->
-      c.deleteRecord() if c
+    # FIXME the children are not removed from the store
+    @get('children').forEach(@get('children').removeObject, @get('children'))
 
     @_super()

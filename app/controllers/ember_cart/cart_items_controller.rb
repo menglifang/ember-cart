@@ -30,6 +30,7 @@ module EmberCart
       if params[:cart_item]
         params[:cart_item].delete(:original_price)
         params[:cart_item].delete(:base_quantity)
+        params[:cart_item].delete(:cart_id)
       end
 
       respond_to do |format|

@@ -17,6 +17,7 @@ module EmberCart
     acts_as_api
     api_accessible :default do |t|
       t.add :id
+      t.add :cart_id
       t.add :parent_id
       t.add :children, template: :default
       t.add :cartable_id

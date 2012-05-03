@@ -59,6 +59,7 @@ module EmberCart
       subject { cart_item.as_api_response(:default) }
 
       it { should have_key :id }
+      it { should have_key :cart_id }
       it { should have_key :parent_id }
       it { should have_key :cartable_id }
       it { should have_key :cartable_type }

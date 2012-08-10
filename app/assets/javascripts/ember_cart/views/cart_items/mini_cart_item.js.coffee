@@ -1,5 +1,5 @@
 EmberCart.MiniCartItem = Ember.View.extend
-  templateName: 'ember_cart/ember/templates/cart_items/mini_cart_item'
+  templateName: 'ember_cart/templates/cart_items/mini_cart_item'
 
   tagName: 'dl'
   classNames: ['ec-mini-cart-item']

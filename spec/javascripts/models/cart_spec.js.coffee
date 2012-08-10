@@ -16,17 +16,6 @@ describe "EmberCart.Cart", ->
 
     Ember.run -> Factory.store.destroy()
 
-  describe 'loading cart with items', ->
-    it 'loads the items', ->
-      cartJson = Factory.attributeFor('cartWithItems', id: 1)
-      Factory.store.load(EmberCart.Cart, cartJson.id, cartJson)
-
-      cart = Factory.store.find(EmberCart.Cart, cartJson.id)
-      cart.getPath('cart_items.length').should.equal(3)
-      cart.getPath('cart_items.firstObject.name').should.equal(
-        cartJson.cart_items[0].name
-      )
-
   describe 'instance methods', ->
     describe '#findCartItemByCartable', ->
       it 'finds out the cart item', ->

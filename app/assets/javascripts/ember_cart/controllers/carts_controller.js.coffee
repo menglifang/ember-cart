@@ -1,13 +1,13 @@
 EmberCart.cartsController = Ember.ArrayController.create
   content: Ember.computed( ->
     EmberCart.store.findAll(EmberCart.Cart)
-  ).property()
+  ).property().volatile()
 
   currentCart: Ember.computed( ->
     @get('content').filter((i) ->
       i.get('current') == true
     ).get('firstObject')
-  ).property('content.@each.current')
+  ).property('content.@each.current').volatile()
 
   cartItemsCount: Ember.computed( ->
     count = 0

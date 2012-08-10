@@ -26,7 +26,7 @@ describe 'EmberCart.MiniCartItem', ->
     it 'sets isChildrenHidden to false', ->
       miniCartItem.set('isChildrenHidden', true)
       miniCartItem.toggleChildren()
-      
+
       miniCartItem.get('isChildrenHidden').should.be.false
 
     it 'sets isChildrenHidden to true', ->
@@ -41,7 +41,7 @@ describe 'EmberCart.MiniCartItem', ->
       mock.expects('remove').once()
 
       miniCartItem.remove()
-      
+
       mock.verify()
 
   describe 'when having no child', ->

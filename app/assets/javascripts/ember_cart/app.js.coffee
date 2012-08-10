@@ -1,9 +1,11 @@
 #= require_self
 #
+#= require ./store
 #= require_tree ./models
 #= require_tree ./controllers
 #= require_tree ./views
 #= require_tree ./templates
+#= require_tree ./routes
 
 window.EmberCart = Ember.Application.create
   rootElement: '#ember-cart'
@@ -19,6 +21,4 @@ window.EmberCart = Ember.Application.create
     #locale = 'locales.' + defaultLocale
     Ember.I18n.translations = EmberCart.locales[defaultLocale]
 
-EmberCart.store = DS.Store.create
-  revision: 4
-  adapter: DS.RESTAdapter.create(bulkCommit: false, namespace: 'ember_cart')
+EmberCart.initialize()

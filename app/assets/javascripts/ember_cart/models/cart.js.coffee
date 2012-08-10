@@ -33,7 +33,6 @@ EmberCart.Cart = DS.Model.extend
     @createCartItem(attrs)
 
   removeCartItem: (cartItem) ->
-    @get('cart_items').removeObject(cartItem)
     cartItem.deleteRecord()
 
   # @private

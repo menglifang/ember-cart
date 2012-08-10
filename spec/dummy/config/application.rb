@@ -62,6 +62,8 @@ module Dummy
     config.assets.version = '1.0'
 
     config.handlebars.precompile = true
+
+    config.ember.variant = :development
   end
 end
 

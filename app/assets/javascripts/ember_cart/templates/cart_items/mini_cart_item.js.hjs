@@ -1,9 +1,9 @@
 <dt>
   <ul>
-    <li class="ec-cart-item-name" {{ action "toggleChildren" }}>{{ cartItem.name }}</li>
+    <li class="ec-cart-item-name" {{ action "toggleChildren" }}>{{ view.cartItem.name }}</li>
     <li class="ec-cart-item-others">
       <div class="ec-cart-item-price ec-money">
-        {{t currency.unit}}{{ cartItem.formattedPrice }}x{{ cartItem.quantity }}
+        {{t currency.unit}}{{ view.cartItem.formattedPrice }}x{{ view.cartItem.quantity }}
       </div>
       <div class="ec-delete">
         <a href="#" {{ action "remove" }}>{{t buttons.delete}}</a>
@@ -12,9 +12,9 @@
     <div class='ec-clear' />
   </ul>
 </dt>
-{{#unless isChildrenHidden}}
+{{#unless view.isChildrenHidden}}
   <dd>
-    {{#each cartItem.children }}
+    {{#each view.cartItem.children }}
       <ul class='ec-cart-item-child'>
         <li class="ec-cart-item-name">{{ name }}</li>
         <li class="ec-cart-item-others">

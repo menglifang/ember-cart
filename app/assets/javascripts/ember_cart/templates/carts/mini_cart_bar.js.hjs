@@ -1,6 +1,6 @@
 <div class="ec-cart-bar">
-  {{t labels.shopping_cart}} ({{cartItemsCount}})
+  {{t labels.shopping_cart}} ({{view.cartItemsCount}})
 </div>
-{{#unless isCartsHidden}}
-  {{view EmberCart.MiniCartList cartsBinding="carts"}}
+{{#unless view.isCartsHidden}}
+  {{view EmberCart.MiniCartList cartsBinding="view.carts"}}
 {{/unless}}

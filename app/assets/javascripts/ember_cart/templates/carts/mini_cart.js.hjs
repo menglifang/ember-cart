@@ -1,12 +1,12 @@
 <div class="ec-cart-name" {{action "toggleCartItems"}}>
-  {{cart.name}} ({{cart.cartItemsCount}})
+  {{view.cart.name}} ({{view.cart.cartItemsCount}})
 </div>
-{{#unless isCartItemsHidden}}
-  {{view EmberCart.MiniCartItemList cartItemsBinding="cart.cart_items"}}
+{{#unless view.isCartItemsHidden}}
+  {{view EmberCart.MiniCartItemList cartItemsBinding="view.cart.cart_items"}}
 {{/unless}}
 <div class="ec-bottom-bar">
   <span>
-    {{t cart.total}} <span class="ec-money">{{t currency.unit}}{{cart.total}}</span>
+    {{t cart.total}} <span class="ec-money">{{t currency.unit}}{{view.cart.total}}</span>
   </span>
   <span><a href="#">{{t links.checkout}}</a></span>
 </div>

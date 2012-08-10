@@ -1,6 +1,6 @@
 #= require_tree ../lib
 #
-#= require ../ember/app
+#= require ../app
 #
 #= require_tree ./locales
 

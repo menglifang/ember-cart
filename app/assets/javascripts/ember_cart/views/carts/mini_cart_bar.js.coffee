@@ -9,8 +9,9 @@ EmberCart.MiniCartBar = Ember.View.extend
 
   isCartsHidden: true
 
-  mouseEnter: ->
-    @set('isCartsHidden', false)
+  eventManager: Ember.Object.create
+    mouseEnter: ->
+      @set('isCartsHidden', false)
 
-  mouseLeave: ->
-    @set('isCartsHidden', true)
+    mouseLeave: ->
+      @set('isCartsHidden', true)

@@ -15,7 +15,7 @@ module EmberCart
       let(:cart) { create(:cart_with_items) }
 
       before do
-        put :clear, id: cart.id, format: :json#, use_route: :ember_cart
+        put :clear, id: cart.id, format: :json, use_route: :ember_cart
       end
 
       it { should respond_with :ok }

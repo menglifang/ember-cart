@@ -1,12 +1,13 @@
+source 'http://ruby.taobao.org'
 
-source 'http://rubygems.org'
 # Declare your gem's dependencies in ember-cart.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
 gemspec
 
 # Development dependencies
-gem 'pg'
+#gem 'pg'
+gem 'mysql2'
 gem 'ember-rails'
 
 group :development, :test do

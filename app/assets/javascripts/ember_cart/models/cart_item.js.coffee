@@ -20,8 +20,5 @@ EmberCart.CartItem = DS.Model.extend
   createChildren: (attrs) ->
     @get('children').createRecord(attrs)
 
-  deleteRecord: ->
-    # FIXME the children are not removed from the store
-    @get('children').forEach(@get('children').removeObject, @get('children'))
-
-    @_super()
+  didCreate: ->
+    @get('parent.children').pushObject(@) if @get('parent')
